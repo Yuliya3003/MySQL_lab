@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Таблица с заемщиками</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                text-align: center;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                max-width: 1200px;
+                margin: auto;
+                padding: 20px;
+            }
+            h1 {
+                color: #3f873f;
+                font-size: 30px;
+            }
+            form {
+                margin-bottom: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            form label {
+                display: block;
+                font-size: 16px;
+                margin: 10px 0 5px;
+            }
+            form input[type="text"], form input[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            form input[type="submit"] {
+                cursor: pointer;
+                background-color: #5dae47;
+                color: #fff;
+                border: none;
+                transition: background-color 0.3s ease;
+            }
+            form input[type="submit"]:hover {
+                background-color: #489341;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            table th, table td {
+                padding: 10px;
+                border: 1px solid #ccc;
+                text-align: left;
+            }
+            table th {
+                background-color: #37662a;
+                color: #fff;
+                font-weight: bold;
+            }
+            table tr:nth-child(odd) {
+                background-color: #f9f9f9;
+            }
+            table tr:hover {
+                background-color: #f1f1f1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Таблица с заемщиками</h1>
+
+            <!-- Форма для добавления записи -->
+            <form action="/add" method="post">
+                <label>ИНН</label>
+                <input type="text" name="inn" required />
+
+				<label>Физ./Юр. лицо (1/0)</label>
+                <input type="number" name="is_individual" required />
+
+                <label>Адрес</label>
+                <input type="text" name="address" required />
+
+                <label>Сумма</label>
+                <input type="number" name="total_amount" required />
+
+                <label>Условия</label>
+                <input type="text" name="conditions" required />
+
+                <label>Юр. примечания</label>
+                <input type="text" name="legal_notes" required />
+
+                <label>Список договоров</label>
+                <input type="text" name="contract_list" required />
+
+                <input type="submit" value="Добавить" />
+            </form>
+
+            <!-- Форма для удаления записи -->
+            <form action="/delete" method="post">
+                <label>ID для удаления</label>
+                <input type="text" name="id" required />
+                <input type="submit" value="Удалить" />
+            </form>
+
+            <br />
+            <table>
+                @tr
+            </table>
+            <p>Версия базы данных: 
+                <b>
+                    @ver
+                </b>
+            </p>
+        </div>
+    </body>
+</html>
